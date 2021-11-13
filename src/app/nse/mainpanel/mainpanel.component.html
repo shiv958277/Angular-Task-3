@@ -1,0 +1,32 @@
+<div class="mainPanelStyle">
+    <div style="background-color: blue;"> <h1>Market Watch - Equity/Stock</h1> </div> 
+    <div class="mainSubPanel">
+        Stock Name <input type="text" [disabled]="status"/>
+    </div>
+    <hr/>
+    <table class="table table-hover">
+        <tr>
+            <th> Selection</th>
+            <th> Stock Name</th>
+            <th> Stock Price</th>
+            <th> PE Ratio</th>
+            <th> Our Analysis</th>
+            <th> Units(Buy)</th>
+            
+        </tr>
+        <tr *ngFor="let stock of stockArr" >
+            <td> <input type="checkbox" name="selectedStock" 
+                                      (click)="addStock(stock,unitsToBuy.value)"/> </td>
+            <td> {{stock.stockName}} </td>
+            <td> {{stock.stockPrice}} </td>
+            <td> {{stock.stockPe}} </td>
+            <td> {{stock.stockPe>20?"Overpriced":"Undervalued"}} </td>
+            <td> <input #unitsToBuy  type="text" name="stockunits" id="units101" size="8" style="background-color: white;"/> </td>
+        </tr>
+    </table>
+    <input type="button" onclick="doThis()" value="Buy Selected"/>
+
+    <hr/>
+    <h2>Details</h2>
+    {{totalPortfolioValue}}
+</div>
